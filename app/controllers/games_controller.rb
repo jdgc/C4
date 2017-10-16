@@ -18,6 +18,7 @@ class GamesController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
   end
 
   def edit
@@ -44,5 +45,4 @@ class GamesController < ApplicationController
   def game_params
     require(:game).permit(:title, :desription, :console)
   end
-end
 end
