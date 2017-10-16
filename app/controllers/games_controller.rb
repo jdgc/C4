@@ -19,6 +19,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @game.owner = current_user
     if @game.save
       redirect_to root_path
     else
@@ -48,6 +49,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    require(:game).permit(:title, :desription, :console)
+    params.require(:game).permit(:name, :description, :console)
   end
 end
