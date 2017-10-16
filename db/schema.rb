@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016080454) do
-
+ActiveRecord::Schema.define(version: 20171016090012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +23,18 @@ ActiveRecord::Schema.define(version: 20171016080454) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["owner_id"], name: "index_games_on_owner_id", using: :btree
+  end
+
+  create_table "rentals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "price"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_rentals_on_game_id", using: :btree
+    t.index ["user_id"], name: "index_rentals_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +56,6 @@ ActiveRecord::Schema.define(version: 20171016080454) do
   end
 
   add_foreign_key "games", "users", column: "owner_id"
+  add_foreign_key "rentals", "games"
+  add_foreign_key "rentals", "users"
 end
