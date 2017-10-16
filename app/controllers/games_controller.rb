@@ -2,6 +2,11 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    if params[:search]
+    @games = Game.search(params[:search]).order("created_at DESC")
+    else
+    @games = Game.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -18,6 +23,7 @@ class GamesController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
   end
 
   def edit
@@ -30,6 +36,7 @@ class GamesController < ApplicationController
       redirect_to root_path
     else
       render :edit
+    end
   end
 
   def delete
@@ -43,5 +50,4 @@ class GamesController < ApplicationController
   def game_params
     require(:game).permit(:title, :desription, :console)
   end
-
 end
