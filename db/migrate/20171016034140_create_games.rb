@@ -4,7 +4,7 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :console
       t.string :description
-      t.references :user, foreign_key: true
+      t.references :owner, index: true, foreign_key: { to_table: :users }
 
       t.timestamps
     end
