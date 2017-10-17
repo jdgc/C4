@@ -1,0 +1,14 @@
+<h2><%= @game.name %></h2>
+<% if @game.photo.blank? %>
+  <p>no image here. <%= link_to "Add one!", edit_game_path(@game)  %></p>
+<% else %>
+  <%= cl_image_tag @game.photo.path %>
+<% end %>
+<h3><%= @game.console %></h3>
+<p><%= @game.description %></p>
+<p>##################</p>
+<p>Game owner: <%= link_to "#{@game.owner.email}", "#" %> (user profile page not implemented-- 2:17pm)</p>
+<% if @game.owner == current_user %>
+  <%= link_to "Edit your listing", edit_game_path(@game) %>
+<% end %>
+<%# TODO: ensure profile page link works  %>
