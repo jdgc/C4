@@ -1,5 +1,5 @@
 .login-wrapper {
-  background: url(../assets/hero-bg.gif);
+  background: $purple url(image-path('hero-bg.gif')) center fixed;
   height: 100vh;
   color: white;
   display: flex;
