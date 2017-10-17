@@ -1,0 +1,25 @@
+.login-wrapper {
+  background: url(../assets/hero-bg.gif);
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    text-align: center;
+  }
+  label {
+    font-weight: lighter;
+    margin-bottom: 0px;
+  }
+  .help-block {
+    font-weight: lighter;
+    font-size: 12px;
+  }
+  a {
+    color: white;
+    font-weight: lighter;
+  }
+}
+
+
