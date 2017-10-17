@@ -1,4 +1,4 @@
-.signin-wrapper {
+.login-wrapper {
   background: url(../assets/hero-bg.gif);
   height: 100vh;
   color: white;
@@ -16,4 +16,10 @@
     font-weight: lighter;
     font-size: 12px;
   }
+  a {
+    color: white;
+    font-weight: lighter;
+  }
 }
+
+

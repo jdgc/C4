@@ -15,8 +15,8 @@
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
               <%= f.input :password_confirmation, required: true %>
               <div class="form-actions">
-              <%= f.button :submit, "Sign up", class: "btn btn-primary"%>
-              <%= render "devise/shared/links" %>
+              <%= f.button :submit, "Sign up", class: "center-block btn btn-primary"%>
+              <%= render "devise/shared/links", class: "btn-foursquare"%>
               </div>
           </div>
         </div>
@@ -25,6 +25,5 @@
     </div>
   </div>
 </div>
-
 
 
