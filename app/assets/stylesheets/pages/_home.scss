@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 #hero-wpr {
-  background: url(../assets/hero-bg.gif);
+  background: $purple url(../assets/hero-bg.gif) center fixed;
   h1, h2 {
     color: #fff;
   }
