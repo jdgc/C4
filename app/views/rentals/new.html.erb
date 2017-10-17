@@ -1,0 +1,10 @@
+<h1>form goes here</h1>
+<%= simple_form_for([@game, @rental]) do |f| %>
+  <%= f.input :price %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit %>
+<% end %>
+
+<%# TODO: make End date a set interval, %>
+<%# TODO: make price calculated based on length of rental %>
