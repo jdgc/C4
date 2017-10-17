@@ -1,8 +1,28 @@
-<%= simple_form_for(@game) do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :console, collection: Game::CONSOLES %>
-<%= f.input :photo, as: :attachinary %>
-<%= f.submit "SUBMIT GAME" %>
-<% end %>
+<%= stylesheet_link_tag "new_game" %>
+<div class="upload-container">
+  <%= simple_form_for(@game) do |f| %>
+  <div class="row">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :console, collection: Game::CONSOLES %>
+  </div>
+  <div class="row">
+    <%= f.input :photo, as: :attachinary %>
+  </div>
+  <div class="row">
+    <%= f.submit "SUBMIT GAME" %>
+  </div>
+  <% end %>
+</div>
+
+
+
+
+<%#= simple_form_for(@game) do |f| %>
+<%#= f.input :name %>
+<%#= f.input :description %>
+<%#= f.input :console, collection: Game::CONSOLES %>
+<%#= f.input :photo, as: :attachinary %>
+<%#= f.submit "SUBMIT GAME" %>
+<%# end %>
 
