@@ -3,9 +3,9 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
     if params[:search]
-    @games = Game.where('name LIKE ?', "%#{params[:search]}%")
+      @games = Game.where('name ILIKE ?', "%#{params[:search]}%")
     else
-    @games = Game.all.order("created_at DESC")
+      @games = Game.all.order("created_at DESC")
     end
   end
 
