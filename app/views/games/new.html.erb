@@ -1,8 +1,37 @@
-<%= simple_form_for(@game) do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :console, collection: Game::CONSOLES %>
-<%= f.input :photo, as: :attachinary %>
-<%= f.submit "SUBMIT GAME" %>
-<% end %>
+<%= stylesheet_link_tag "new_game" %>
+<div class="create-listing-wpr">
+  <div class="container">
+    <div class="row">
+      <h1>create a listing</h1>
+      <%= simple_form_for(@game) do |f| %>
+        <div class="container-content">
+          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <div class="text-input">
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :console, collection: Game::CONSOLES %>
+            </div>
+          </div>
+           <div class="col-xs-12 col-sm-6">
+            <div class="photo-input">
+              <%= f.input :photo, as: :attachinary, class: "btn btn-warning" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <%= f.submit "CREATE LISTING", class: "center-block btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<%#= simple_form_for(@game) do |f| %>
+<%#= f.input :name %>
+<%#= f.input :description %>
+<%#= f.input :console, collection: Game::CONSOLES %>
+<%#= f.input :photo, as: :attachinary %>
+<%#= f.submit "SUBMIT GAME" %>
+<%# end %>
 
