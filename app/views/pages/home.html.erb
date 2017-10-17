@@ -6,9 +6,11 @@
       <h1 class="text-center font-weight-extra-bold">press start</h1>
       <h2 class="text-center font-weight-light font-body font-body">find a game to rent</h2>
 
-      <%= form_tag(games_path, :method => "get", id: "search-form", class: "center") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "the legend of zelda" %>
-      <%= submit_tag "start", :name => nil %>
+      <%= form_tag(games_path, :method => "get", id: "search-form", class: "center-block") do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], class: "form-control input-size-large" %>
+      </div>
+      <%= submit_tag "start", :name => nil, class: "center-block btn btn-primary font-weight-extra-bold" %>
       <% end %>
       </div>
 
@@ -16,44 +18,46 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <h2 class="text-center font-weight-extra-bold">pick a console</h2>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">Xbox</h3>
-        <img src="../assets/xbox.png" alt="" class="img-responsive">
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">N64</h3>
-        <img src="../assets/n64.png" alt="" class="img-responsive">
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">Super NES</h3>
-        <img src="../assets/snes.png" alt="" class="img-responsive">
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">Wii</h3>
-        <img src="../assets/wii.png" alt="" class="img-responsive">
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">Gamecube</h3>
-        <img src="../assets/gamecube.png" alt="" class="img-responsive">
-      </a>
-    </div>
-    <div class="col-sm-4">
-      <a href="#" class="console-link">
-        <h3 class="text-center font-weight-light font-body">Playstation</h3>
-        <img src="../assets/playstation.png" alt="" class="img-responsive">
-      </a>
+<div id="consoles-wpr">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center text-lowercase font-weight-extra-bold">pick a console</h2>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">Xbox</h3>
+          <img src="../assets/xbox.png" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">N64</h3>
+          <img src="../assets/n64.png" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">Super NES</h3>
+          <img src="../assets/snes.png" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">Wii</h3>
+          <img src="../assets/wii.png" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">Gamecube</h3>
+          <img src="../assets/gamecube.png" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a href="#" class="console-link">
+          <h3 class="text-center text-lowercase font-weight-light font-body">Playstation</h3>
+          <img src="../assets/playstation.png" alt="" class="img-responsive">
+        </a>
+      </div>
     </div>
   </div>
 </div>

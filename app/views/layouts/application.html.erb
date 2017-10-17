@@ -9,19 +9,10 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-
-  <!-- keyword search form - for navbar -->
-  <%= form_tag(games_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Games" %>
-  <%= submit_tag "Search", :name => nil %>
-  <% end %>
-
-<!--  -->
-
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+    <%= cloudinary_js_config %>
   </body>
 </html>
