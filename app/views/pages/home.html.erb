@@ -22,42 +22,14 @@
   <div class="container">
     <div class="row">
       <h2 class="text-center text-lowercase font-weight-extra-bold">pick a console</h2>
-      <div class="col-sm-4">
-        <%= link_to "", console_path, :class => "btn btn-inverse console-link" do %>
-          <h3 class="text-center text-lowercase font-weight-light font-body">Xbox</h3>
-          <%= image_tag("xbox.png", :alt => "xbox", :class => "console-img img-responsive") %>
+      <% for platform in Game::CONSOLES %>
+        <div class="col-sm-4">
+        <%= link_to "", console_path(platform.gsub(' ', '_')), :class => "btn btn-inverse console-link" do %>
+          <h3 class="text-center text-lowercase font-weight-light font-body"><%= platform %></h3>
+          <%= image_tag("#{platform}.png", :alt => "#{platform}", :class => "console-img img-responsive") %>
         <% end %>
       </div>
-      <div class="col-sm-4">
-        <a href="#" class="console-link">
-          <h3 class="text-center text-lowercase font-weight-light font-body">N64</h3>
-          <%= image_tag("n64.png", :alt => "n64", :class => "console-img img-responsive") %>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#" class="console-link">
-          <h3 class="text-center text-lowercase font-weight-light font-body">Super NES</h3>
-          <%= image_tag("snes.png", :alt => "snes", :class => "console-img img-responsive") %>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#" class="console-link">
-          <h3 class="text-center text-lowercase font-weight-light font-body">Wii</h3>
-          <%= image_tag("wii.png", :alt => "wii", :class => "console-img img-responsive") %>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#" class="console-link">
-          <h3 class="text-center text-lowercase font-weight-light font-body">Gamecube</h3>
-          <%= image_tag("gamecube.png", :alt => "gamecube", :class => "console-img img-responsive") %>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#" class="console-link">
-          <h3 class="text-center text-lowercase font-weight-light font-body">Playstation</h3>
-          <%= image_tag("playstation.png", :alt => "playstation", :class => "console-img img-responsive") %>
-        </a>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

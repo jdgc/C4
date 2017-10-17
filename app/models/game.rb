@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
 
-  CONSOLES = ["Nintendo 64", "PlayStation", "Super Nintendo", "Xbox", "Wii", "Gamecube"]
+  CONSOLES = ["PlayStation", "Xbox", "Wii", "Gamecube", "Nintendo 64", "Super Nintendo"]
   belongs_to :owner, class_name: 'User'
   has_attachment :photo
   validates :name, :owner, :description, presence: true
