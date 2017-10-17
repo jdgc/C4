@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 gem 'cloudinary'
+gem 'rails_12factor'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'omniauth-facebook'
 gem 'devise'
