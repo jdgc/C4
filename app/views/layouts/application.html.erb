@@ -9,16 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-
-  <!-- keyword search form - for navbar -->
-  <%= form_tag(games_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Games" %>
-  <%= submit_tag "Search", :name => nil %>
-  <% end %>
-
-<!--  -->
-
-
+    <%= render 'shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
