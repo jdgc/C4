@@ -8,9 +8,10 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-      <p><%= current_user.email  %></p>
+      <!-- <p><%= current_user.email  %></p> -->
       <!-- Links when logged in -->
       <%= link_to "Add game", new_game_path, :method => "get", class: "navbar-wagon-item navbar-wagon-link" %>
+
       <%# link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%# link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%# link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
