@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :games do
     resources :rentals, only: [:new, :create]
   end
+  get '/games/consoles/:console', to: 'games#console', as: 'console'
   resources :rentals, only: [:show]
   resources :users, only: [:show, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
