@@ -2,7 +2,7 @@
   <h2><%= params[:search] == "" ? "All games" : "Games matching #{params[:search]}"%></h2>
   <ul>
     <% for game in @games %>
-    <li><%= link_to "#{game.name}", game_path(game) %>: owner=<%= game.owner %>, status:IMPLEMENT STATUS INTO GAME MODEL(rented or not)</li>
+    <li><%= link_to "#{game.name}", game_path(game) %>: owner=<%= game.owner.email %>, status:IMPLEMENT STATUS INTO GAME MODEL(rented or not)</li>
     <% end %>
   </ul>
 <% else %>
