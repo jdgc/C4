@@ -22,13 +22,11 @@
   <div class="container">
     <div class="row">
       <h2 class="text-center text-lowercase font-weight-extra-bold">pick a console</h2>
-      <% for platform in Game::CONSOLES %>
+      <% Game::CONSOLES.each do |platform| %>
         <div class="col-sm-4">
-        <%= link_to "", console_path(platform.gsub(' ', '_')), :class => "btn btn-inverse console-link" do %>
           <h3 class="text-center text-lowercase font-weight-light font-body"><%= platform %></h3>
-          <%= image_tag("#{platform}.png", :alt => "#{platform}", :class => "console-img img-responsive") %>
-        <% end %>
-      </div>
+          <%= link_to image_tag("#{platform}.png", :alt => "#{platform}", :class => "console-img img-responsive"), console_path(platform), :class => "btn btn-inverse console-link" %>
+        </div>
       <% end %>
     </div>
   </div>

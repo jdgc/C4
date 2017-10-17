@@ -1,8 +1,8 @@
 <% if !@games.blank? %>
-  <h2><%= params[:search] == "" ? "All games" : "Games matching #{params[:search]}"%></h2>
+  <h2><%= params[:console]%> Games</h2>
   <ul>
     <% for game in @games %>
-    <li><%= link_to "#{game.name}", game_path(game) %>: owner=<%= game.owner.email %>, status:IMPLEMENT STATUS INTO GAME MODEL(rented or not)</li>
+    <li><%= link_to "#{game.name}", game_path(game) %>: owner=<%= game.owner.email %></li>
     <% end %>
   </ul>
 <% else %>
