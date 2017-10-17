@@ -7,8 +7,10 @@
 <h3><%= @game.console %></h3>
 <p><%= @game.description %></p>
 <p>##################</p>
-<p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %> (user profile page not implemented-- 2:17pm)</p>
+<p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
 <% if @game.owner == current_user %>
   <%= link_to "Edit your listing", edit_game_path(@game) %>
+<% else %>
+  <%= link_to "RENT THIS GAME!", new_game_rental_path(@game) %>
 <% end %>
 <%# TODO: ensure profile page link works  %>
