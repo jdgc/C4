@@ -1,7 +1,3 @@
-body {
-  background-color: white;
-}
-
 .signin-wrapper {
   background: url(../assets/hero-bg.gif);
   height: 100vh;
@@ -12,6 +8,12 @@ body {
   h2 {
     text-align: center;
   }
+  label {
+    font-weight: lighter;
+    margin-bottom: 0px;
+  }
+  .help-block {
+    font-weight: lighter;
+    font-size: 12px;
+  }
 }
-
-
