@@ -34,12 +34,20 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+    if @game.owner != current_user
+      redirect_to root_path
+    end
   end
 
   def update
-     @game = Game.new(game_params)
-    if @game.save
+     @game = Game.find(params[:id])
+    if @game.owner != current_user
+      return false
       redirect_to root_path
+    end
+     @game.update(game_params)
+    if @game.save
+      redirect_to game_path(@game)
     else
       render :edit
     end
@@ -54,6 +62,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :description, :console, :photo)
+    params.require(:game).permit(:name, :description, :console, :photo, :location)
   end
 end
