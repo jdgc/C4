@@ -1,47 +1,40 @@
-<%= stylesheet_link_tag 'profile_page' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
+      <%= image_tag avatar_url %>
+    </div>
+    <div class="col-sm-8">
+      <h1>listings:</h1>
+      <% if !@games.blank? %>
+        <div class="game-listing">
+          <% for game in @games %>
+            <%= cl_image_path game.photo.nil? ? 'http://placehold.it/50x50' : game.photo.path, height:50, width: 50 %>
+            <div class="message-name">
+              <%= link_to "#{game.name}", game_path(game) %>
+            </div>
 
-<div class="games-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-      </div>
-      <div class="col-sm-8">
-        <h1>currently listed:</h1>
-        <% if !@games.blank? %>
-          <div class="game-rental-listing">
-            <% for game in @games %>
-              <div class="game-block">
-                <%= image_tag "#{game.console}.png", :class => "console-image"%>
-                <div class="game-info">
-                  <h3 class="game-name"><%= link_to "#{game.name}", game_path(game) %></h3>
-                  <p class="game-console"><%= "#{game.console}" %></p>
-                </div>
-              </div>
-            <% end %>
-        <% else %>
-          <p>No games!</p>
-        <% end %>
-          </div>
-          <h1>currently renting:</h1>
-          <% if !@rentals.blank? %>
-            <div class="game-borrowing-list">
-              <% for rental in @rentals %>
-              <div class="rent-block">
-                <%= link_to "#{rental.game.name}", rental_path(rental) %>
-              </div>
-              <% end %>
-          <% else %>
-            <p>No current rentals!</p>
           <% end %>
-          </div>
+            <% else %>
+              <p>No games!</p>
+            <% end %>
+        <div class="message-body">
+          <p><strong>I am not sure yet!</strong></p>
+          <p>
+            I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+          </p>
+        </div>
+        <div class="message-status">
+          <p class="status pending">Pending</p>
+          <p class="price">€345</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')"></div>
 
 
 
@@ -75,7 +68,7 @@
 
 
 
-<!-- <h2><%= @user.username %></h2>
+<h2><%= @user.username %></h2>
 <p><%= @user.email %></p>
 
 <% if !@games.blank? %>
@@ -100,5 +93,5 @@
   </ul>
 <% else %>
   <p>No current rentals!</p>
-<% end %> -->
+<% end %>
 
