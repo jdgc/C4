@@ -22,7 +22,7 @@
     </div>
     <div class="col-sm-4">
       <!-- <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p> -->
-      <p><em>Pickup Location</em><br/><%= @game.location %></p>
+      <p><b>Pickup Location</b><br/><%= @game.location %></p>
       <% if @game.owner == current_user %>
         <%= link_to "edit your listing", edit_game_path(@game), :class => "btn btn-primary" %>
       <% else %>
