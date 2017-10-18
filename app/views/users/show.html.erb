@@ -6,25 +6,26 @@
         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
       </div>
       <div class="col-sm-8">
-        <h1>currently listed:</h1>
-        <% if !@games.blank? %>
-          <div class="game-rental-listing">
-            <% for game in @games %>
-              <div class="game-block">
-                <%= image_tag "#{game.console}.png", :class => "console-image"%>
-               <div class="game-info">
-                <h3 class="game-name"><%= link_to "#{game.name}", game_path(game) %></h3>
-                 <p class="game-console"><%= "#{game.console}" %></p>
-             </div>
-            </div>
-        <% end %>
-       <% else %>
-           <p>No games!</p>
-        <% end %>
-           </div>
+        <div class="game-rental-listing">
+          <h1>currently listed:</h1>
+          <% if !@games.blank? %>
+
+              <% for game in @games %>
+                <div class="game-block">
+                  <%= image_tag "#{game.console}.png", :class => "console-image"%>
+                 <div class="game-info">
+                  <h3 class="game-name"><%= link_to "#{game.name}", game_path(game) %></h3>
+                   <p class="game-console"><%= "#{game.console}" %></p>
+               </div>
+              </div>
+          <% end %>
+         <% else %>
+             <p>No games!</p>
+          <% end %>
+        </div>
+        <div class="game-borrowing-list">
            <h1>currently renting:</h1>
            <% if !@rentals.blank? %>
-             <div class="game-borrowing-list">
                <% for rental in @rentals %>
                <div class="rent-block">
                  <%= link_to "#{rental.game.name}", rental_path(rental) %>
@@ -33,9 +34,9 @@
            <% else %>
              <p>No current rentals!</p>
            <% end %>
-           </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
