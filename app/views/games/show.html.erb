@@ -7,7 +7,12 @@
     </div>
     <div class="col-sm-4">
       <% if @game.photo.blank? %>
-        <p>No image here.<br/><%= link_to "Add one!", edit_game_path(@game)  %></p>
+        <p>no image here.
+          <% if current_user == @game.owner %>
+            <%= link_to "Add one!", edit_game_path(@game)  %></p>
+          <% else %>
+            </p>
+          <% end %>
       <% else %>
         <%= cl_image_tag @game.photo.path, class: "img-responsive" %>
       <% end %>

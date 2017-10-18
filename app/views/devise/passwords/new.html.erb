@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
         <div class="password">
-          <h2 class="font-weight-extra-bold">forgot your password?</h2>
+          <h2 class="font-weight-extra-bold white-font">forgot your password?</h2>
             <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
               <%= f.error_notification %>
 
-              <div class="form-inputs">
+              <div class="form-inputs white-font">
                 <%= f.input :email, required: true, autofocus: true %>
               </div>
               <div class="form-actions">
