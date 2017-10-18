@@ -1,12 +1,26 @@
 <h2><%= @user.username %></h2>
 <p><%= @user.email %></p>
+
 <% if !@games.blank? %>
-  <h3>Their game list:</h3>
+  <h3>Game list:</h3>
   <ul>
     <% for game in @games %>
       <li><%= link_to "#{game.name}", game_path(game) %></li>
     <% end %>
   </ul>
 <% else %>
-  <p>User has no games!</p>
+  <p>No games!</p>
+<% end %>
+
+
+<% if !@rentals.blank? %>
+  <h3>Current rentals:</h3>
+  <ul>
+    <% for rental in @rentals %>
+      <li><%= link_to "#{rental.game.name}", rental_path(rental) %></li>
+      <li>Rental due date: <%= rental.end_date %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No current rentals!</p>
 <% end %>
