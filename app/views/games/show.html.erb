@@ -12,7 +12,6 @@
 <% if @game.owner == current_user %>
   <%= link_to "Edit your listing", edit_game_path(@game) %>
 <% else %>
-  <%= link_to "RENT THIS GAME!", new_game_rental_path(@game) %>
   <h1>Rent this game!!</h1>
   <%= simple_form_for([@game, @rental]) do |f| %>
     <%# f.input :price %>

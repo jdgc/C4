@@ -16,10 +16,11 @@ class RentalsController < ApplicationController
       flash[:alert] = "You must be signed in to do that."
       redirect_to game_path(@game)
     else
-      flash[:alert] = "Enter valid date."
+      flash[:alert] = "Please enter a valid rental date"
       redirect_to game_path(@game)
     end
   end
+
 
   def show
     @rental = Rental.find(params[:id])
