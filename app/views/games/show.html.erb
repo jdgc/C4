@@ -1,26 +1,37 @@
-<h2><%= @game.name %></h2>
-<% if @game.photo.blank? %>
-  <p>no image here. <%= link_to "Add one!", edit_game_path(@game)  %></p>
-<% else %>
-  <%= cl_image_tag @game.photo.path %>
-<% end %>
-<h3><%= @game.console %></h3>
-<p><%= @game.description %></p>
-<p>##################</p>
-<p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
-<p>Game location: <%= @game.location %></p>
-<% if @game.owner == current_user %>
-  <%= link_to "Edit your listing", edit_game_path(@game) %>
-<% else %>
-  <%= link_to "RENT THIS GAME!", new_game_rental_path(@game) %>
-  <h1>Rent this game!!</h1>
-  <%= simple_form_for([@game, @rental]) do |f| %>
-    <%# f.input :price %>
-    <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-    <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-    <%= f.submit %>
-  <% end %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 heading-wpr">
+      <h1 class="main-heading no-whitespace"><%= @game.name %></h1>
+      <h2 class="no-whitespace"><%= @game.console %></h2>
+    </div>
+    <div class="col-sm-4">
+      <% if @game.photo.blank? %>
+        <p>no image here. <%= link_to "Add one!", edit_game_path(@game)  %></p>
+      <% else %>
+        <%= cl_image_tag @game.photo.path, class: "img-responsive" %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <p><%= @game.description %></p>
+    </div>
+    <div class="col-sm-4">
+      <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
+      <p>Game location: <%= @game.location %></p>
+      <% if @game.owner == current_user %>
+        <%= link_to "Edit your listing", edit_game_path(@game) %>
+      <% else %>
+        <h1>Rent this game!!</h1>
+        <%= simple_form_for([@game, @rental]) do |f| %>
+          <%# f.input :price %>
+          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
+          <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+          <%= f.submit %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-<%# TODO: ensure profile page link works  %>
+
