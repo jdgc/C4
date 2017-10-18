@@ -1,0 +1,32 @@
+.games-container {
+  h2 {
+    font-weight: bold;
+  }
+  h1 {
+    font-weight: bold;
+    color: $dark-purple;
+  }
+  h3 {
+    color: $dark-purple;
+    margin: 0;
+    font-weight: bold;
+  }
+  p {
+    font-size: 12px;
+  }
+
+  .console-image {
+  max-height: 40px;
+  padding: 2px;
+  }
+
+  .game-block {
+    display: flex;
+    padding: 10px
+  }
+  .game-info {
+    margin-left: 10px;
+  }
+}
+
+
