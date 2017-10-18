@@ -12,10 +12,15 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     if @rental.save
       redirect_to rental_path(@rental)
+    elsif !user_signed_in?
+      flash[:alert] = "You must be signed in to do that."
+      redirect_to game_path(@game)
     else
-      render game_path(@game)
+      flash[:alert] = "Please enter a valid rental date"
+      redirect_to game_path(@game)
     end
   end
+
 
   def show
     @rental = Rental.find(params[:id])
