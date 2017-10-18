@@ -4,6 +4,12 @@
     color: $dark-purple;
     margin: 50px 0;
   }
+
+  label {
+    font-weight: lighter;
+    color: $med-purple;
+  }
+
   .upload-container {
   display: flex;
   justify-content: center;
@@ -12,7 +18,7 @@
 
   .btn-success {
     padding: 8px 50px;
-    margin-bottom: 30px;
+    margin: 30px;
     font-family: $body-font;
   }
 
