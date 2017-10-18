@@ -12,5 +12,14 @@
   <%= link_to "Edit your listing", edit_game_path(@game) %>
 <% else %>
   <%= link_to "RENT THIS GAME!", new_game_rental_path(@game) %>
+  <h1>Rent this game!!</h1>
+  <%= simple_form_for([@game, @rental]) do |f| %>
+    <%# f.input :price %>
+    <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
+    <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+    <%= f.submit %>
+  <% end %>
 <% end %>
+
+
 <%# TODO: ensure profile page link works  %>

@@ -15,6 +15,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @rental = Rental.new
   end
 
   def new
