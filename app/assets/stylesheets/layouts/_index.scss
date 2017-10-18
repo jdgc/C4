@@ -4,6 +4,9 @@
 // @import "profile";
 // @import "map";
 
+.content-wrap {
+  min-height: calc(100vh - 70px);
+}
 body .container {
   color: #777678;
 }
