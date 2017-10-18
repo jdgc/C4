@@ -1,16 +1,70 @@
-<div class="profile-container">
-  <h1>profile</h1>
-  <div id="user-container">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
+      <%= image_tag avatar_url %>
+    </div>
+    <div class="col-sm-8">
+      <h1>listings:</h1>
+      <% if !@games.blank? %>
+        <div class="game-listing">
+          <% for game in @games %>
+            <%= cl_image_path game.photo.nil? ? 'http://placehold.it/50x50' : game.photo.path, height:50, width: 50 %>
+            <div class="message-name">
+              <%= link_to "#{game.name}", game_path(game) %>
+            </div>
 
-  </div>
-  <div class="listing-container">
-    <div class="row">
-      <div class="col xs-12 col-sm-12">
-
+          <% end %>
+            <% else %>
+              <p>No games!</p>
+            <% end %>
+        <div class="message-body">
+          <p><strong>I am not sure yet!</strong></p>
+          <p>
+            I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
+          </p>
+        </div>
+        <div class="message-status">
+          <p class="status pending">Pending</p>
+          <p class="price">€345</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')"></div>
+
+
+
+
+<!-- <div class="profile-container">
+  <h1>profile</h1>
+  <div id="user-container">
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/100x100" %>
+    <%= image_tag avatar_url %>
+  </div>
+  div.
+  <div class="game-listing-container">
+    <div class="row">
+      <div class="col-sm-12">
+        <% if !@games.blank? %>
+          <h3>Game list:</h3>
+          <ul>
+    <% for game in @games %>
+      <li><%= link_to "#{game.name}", game_path(game) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No games!</p>
+<% end %>
+
+      </div>
+    </div>
+  </div>
+</div> -->
 
 
 <!--
