@@ -1,18 +1,46 @@
-<h2>Rental details</h2>
-<p>Game: <%= @rental.game.name %></p>
-<p>Game owner: <%= "#{@rental.game.owner.email}" %></p>
-<p>Game lent to: <%= "#{@rental.user.email}" %></p>
-<p>Due date: <%= @rental.end_date.to_date %></p>
-<h2>Price: <%= "$#{@rental.price}" %></h2>
-<hr>
-<style>
-  #map{
-    height: 300px;
-    width: 400px;
-    background-color: #faa;
-  }
-</style>
-<div id="map"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 heading-wpr">
+      <h1 class="main-heading no-whitespace">Game Rental</h1>
+      <h2 class="font-weight-light font-body font-body no-whitespace">rental details</h2>
+    </div>
+    <div class="col-sm-4">
+      <ul>
+        <li>Title: <%= @rental.game.name %></li>
+        <li>Game owner: <%= "#{@rental.game.owner.email}" %></li>
+        <li>Game lent to: <%= "#{@rental.user.email}" %></li>
+        <li>Due date: <%= @rental.end_date.to_date %></li>
+        <li>Price: <%= "$#{@rental.price}" %></li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <p>Pickup location:</p>
+      <style>
+        .map-container {
+          width: 100%;
+          margin: 0 auto;
+        }
+        .map-wpr {
+          position: relative;
+        }
+        #map {
+            height: 400px;
+            overflow: hidden;
+            padding-bottom: 22.25%;
+            padding-top: 30px;
+            position: relative;
+            background: $gray;
+        }
+      </style>
+      <div class="map-container">
+        <div class="map-wrp">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDCtwfUKjKj2MGQhssB39f_imw0ZKrLKbA"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
