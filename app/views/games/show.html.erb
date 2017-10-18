@@ -16,17 +16,16 @@
       <p><%= @game.description %></p>
     </div>
     <div class="col-sm-4">
-      <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
-      <p>Game location: <%= @game.location %></p>
+      <!-- <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p> -->
+      <p><em>Pickup Location</em><br/><%= @game.location %></p>
       <% if @game.owner == current_user %>
-        <%= link_to "Edit your listing", edit_game_path(@game) %>
+        <%= link_to "edit your listing", edit_game_path(@game), :class => "btn btn-primary" %>
       <% else %>
-        <h1>Rent this game!!</h1>
         <%= simple_form_for([@game, @rental]) do |f| %>
           <%# f.input :price %>
           <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
           <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-          <%= f.submit %>
+          <%= f.submit "rent this game", :class => "btn btn-primary" %>
         <% end %>
       <% end %>
     </div>
