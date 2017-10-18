@@ -1,14 +1,23 @@
-<% if !@games.blank? %>
-  <h2><%= params[:console]%> Games</h2>
-  <ul>
-    <% for game in @games %>
-    <li><%= link_to "#{game.name}", game_path(game) %>: owner=<%= game.owner.email %></li>
-    <% end %>
-  </ul>
-<% else %>
+<div id="search-listings">
   <div class="container">
-    <div class="row center-block">
-      <p>Nothing found :(</p>
+    <div class="row">
+      <div class="heading-wpr">
+        <h1 class="main-heading no-whitespace"><%= params[:console] == "" ? "All games" : "#{params[:console]}"%></h1>
+        <h2 class="font-weight-light font-body font-body no-whitespace">listings by console</h2>
+      </div>
+      <% if !@games.blank? %>
+          <% @games.each do |game| %>
+          <div class="col-sm-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
+              <div class="card-category"><%= "#{game.console}" %></div>
+              <div class="card-description"><h2><%= "#{game.name}" %></h2></div>
+              <%= link_to "", game_path(game), class: "card-link" %>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+          <p>Nothing found :(</p>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>

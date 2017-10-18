@@ -1,10 +1,12 @@
 <div id="search-listings">
   <div class="container">
     <div class="row">
-      <h1 class="font-weight-extra-bold">game matches</h1>
+      <div class="col-sm-12 heading-wpr">
+        <h1 class="main-heading no-whitespace">game matches</h1>
+        <h2 class="font-weight-light font-body font-body no-whitespace"><%= params[:search] == "" ? "All games" : "search results for: #{params[:search]}"%></h2>
+      </div>
       <% if !@games.blank? %>
-        <h2 class="font-weight-light font-body font-body"><%= params[:search] == "" ? "All games" : "search results for: #{params[:search]}"%></h1>
-          <% @games.each do |game|  %>
+        <% @games.each do |game|  %>
           <div class="col-sm-4">
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
               <div class="card-category"><%= "#{game.console}" %></div>

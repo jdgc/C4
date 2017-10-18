@@ -4,6 +4,9 @@
 // @import "profile";
 // @import "map";
 
+body .container {
+  color: #777678;
+}
 .input-size-large {
   width: 400px;
 }
@@ -18,6 +21,20 @@
 }
 .font-body-size {
   font-size: 18px;
+}
+.no-whitespace {
+  margin: 0;
+  padding: 0;
+}
+.heading-wpr {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.main-heading {
+  font-weight: 800;
+  color: $dark-purple;
+  font-family: $headers-font;
+  text-transform: lowercase;
 }
 
 // * {
