@@ -2,5 +2,5 @@
 <p>Game: <%= @rental.game.name %></p>
 <p>Game owner: <%= "#{@rental.game.owner.email}" %></p>
 <p>Game lent to: <%= "#{@rental.user.email}" %></p>
-<p>Due date: <%= @rental.end_date %></p>
+<p>Due date: <%= @rental.end_date.to_date %></p>
 <h2>Price: <%= "$#{@rental.price}" %></h2>
