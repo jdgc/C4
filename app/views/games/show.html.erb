@@ -8,6 +8,7 @@
 <p><%= @game.description %></p>
 <p>##################</p>
 <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
+<p>Game location: <%= @game.location %></p>
 <% if @game.owner == current_user %>
   <%= link_to "Edit your listing", edit_game_path(@game) %>
 <% else %>
