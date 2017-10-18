@@ -14,7 +14,8 @@
       </ul>
     </div>
     <div class="col-sm-8">
-      <p>Pickup location:</p>
+      <p>Pickup location:<br/>
+        <%= @rental.game.location %></p>
       <style>
         .map-container {
           width: 100%;
@@ -28,6 +29,7 @@
             overflow: hidden;
             padding-bottom: 22.25%;
             padding-top: 30px;
+            margin-bottom: 30px;
             position: relative;
             background: $gray;
         }
