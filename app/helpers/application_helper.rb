@@ -1,6 +1,7 @@
 module ApplicationHelper
 
 
+
   def rental_status(game)
     rental = game.rentals.first
     if game.owner == current_user && game.available? == true
@@ -22,6 +23,10 @@ module ApplicationHelper
       @rental.destroy
    end
 
+
+  def cl_image_tag_or_default(item, class_name: nil)
+    return cl_image_tag(item.photo.nil? ? 'http://placehold.it/60x60' : item.photo.path, height: 60, width: 60, crop: :fill, class: class_name)
+  end
 end
 end
 

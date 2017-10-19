@@ -1,0 +1,11 @@
+.game-details {
+  .console-image {
+    max-height: 1em;
+  }
+  .rental-box {
+    background-color: rgba(129, 138, 163, 0.1);
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+}

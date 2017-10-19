@@ -1,18 +1,46 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 heading-wpr">
-      <h1 class="main-heading no-whitespace"><%= @game.name %></h1>
-      <h2 class="no-whitespace"><%= @game.console %></h2>
-    </div>
-    <div class="col-sm-4">
-      <% if @game.photo.blank? %>
-        <p>no image here.
-          <% if current_user == @game.owner %>
-            <%= link_to "Add one!", edit_game_path(@game)  %></p>
-          <% else %>
-            </p>
-          <% end %>
+<div class="game-details wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-margin-btm">
+        <h1 class="header-text header-main"><%= @game.name %></h1>
+        <h2 class="subheading-text"><%= image_tag "#{@game.console}.png", :class => "console-image" %> <%= @game.console %></h2>
+      </div>
+      <div class="col-sm-4">
+        <% if @game.photo.blank? %>
+          <p>no image here.
+            <% if current_user == @game.owner %>
+              <%= link_to "Add one!", edit_game_path(@game)  %></p>
+            <% else %>
+              </p>
+            <% end %>
+        <% else %>
+          <%= cl_image_tag @game.photo.path, class: "img-responsive" %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <p><%= @game.description %></p>
+      </div>
+<!--       <div class="col-sm-4">
+        <div class="rental-box">
+          <%# if @game.owner == current_user %>
+            <p><b>Game borrower</b><br/>FixThis UserRentingGame</p>
+            <p><b>Due on:</b> FixThis</p>
+            <hr/>
+            <%=# link_to "edit", edit_game_path(@game), :class => "btn btn-warning" %>
+            <a class="btn btn-danger">delete</a>
+          <%# else %>
+            <p><b>Game owner</b><br/><%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
+            <p><b>Pickup Location</b><br/><%= @game.location %></p>
+            <hr/>
+            <%=# simple_form_for([@game, @rental]) do |f| %>
+              <%# f.input :price %>
+              <%=# f.input :start_date, as: :date, input_html: { min: Date.today }%>
+              <%=# f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+              <%=# f.submit "rent", :class => "btn btn-info" %>
+            <%# end %>
+          <%# end %> 
+        </div>
+      </div> -->
       <% else %>
         <%= cl_image_tag @game.photo.path, class: "img-responsive" %>
       <% end %>
@@ -45,6 +73,3 @@
     </div>
   </div>
 </div>
-
-
-

@@ -1,15 +1,6 @@
 // Specific CSS for your home-page
 #hero-wpr {
-
   background: $purple url(image-path('hero-bg.gif')) center fixed;
-
-  h1, h2 {
-    color: #fff;
-    margin-top: 0;
-  }
-  h2 {
-    font-size: 18px;
-  }
   .btn {
     font-family: $headers-font;
     padding-right: 50px;
