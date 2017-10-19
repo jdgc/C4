@@ -38,7 +38,7 @@
               <%=# f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
               <%=# f.submit "rent", :class => "btn btn-info" %>
             <%# end %>
-          <%# end %> 
+          <%# end %>
         </div>
       </div> -->
       <% else %>
@@ -55,33 +55,6 @@
 
       <% if @game.owner == current_user %>
         <%= link_to "edit your listing", edit_game_path(@game), :class => "btn btn-primary" %>
-
-      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today %>
-      <p>This game is currently on loan and will be available for rental after <%= @rental.end_date.to_date %> </p>
-
-      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today %>
-      <p>This game is currently on loan and will be available for rental after <%= rental.end_date.to_date %> </p>
-
-       <% elsif @game.available? == false && rental.start_date > Date.today && rental.end_date > Date.today %>
-      <p>This game is unavailable from <%= rental.start_date.to_date %> to <%= rental.end_date.to_date %> </p>
-      <%= simple_form_for([@game, @rental]) do |f| %>
-          <%# f.input :price %>
-          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-          <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-          <%= f.submit "rent this game", :class => "btn btn-primary" %>
-        <% end %>
-
-      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date < Date.today %>
-      <% @game.update(available?: true) %>
-      <% @game.save %>
-      <%= simple_form_for([@game, @rental]) do |f| %>
-          <%# f.input :price %>
-          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-          <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-          <%= f.submit "rent this game", :class => "btn btn-primary" %>
-        <% end %>
-
-
       <% else %>
         <%= simple_form_for([@game, @rental]) do |f| %>
           <%# f.input :price %>
@@ -93,3 +66,19 @@
     </div>
   </div>
 </div>
+
+<!--
+<% if current_user == @game.owner %>
+  <% if @game.avaliable? == true %>
+    render edit button
+    <% else %>
+    <p>You cant edit a game being rented out</p>
+  <% end %>
+<% else %>
+  <% if @game.avaliable? == true %>
+    render rental form
+    <% else %>
+     <p> Days left until you can rent: @game.due_date - Time.now </p>
+  <% end %>
+<% end %>
+-->
