@@ -1,6 +1,6 @@
 .login-wrapper {
   background: $purple url(image-path('hero-bg.gif')) center fixed;
-  height: 100vh;
+  min-height: calc(100vh - 140px);
   color: white;
   display: flex;
   justify-content: center;
@@ -19,6 +19,11 @@
   a {
     color: white;
     font-weight: lighter;
+    &:hover {
+      text-decoration: none;
+      opacity: .9;
+      transition: .2s ease-in-out;
+    }
   }
 }
 
