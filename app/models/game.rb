@@ -22,6 +22,11 @@ def rental_status
     end
   end
 
+def self.current_rental(game)
+  Rental.where(game_id:game.id).each do |rental|
+    return rental if rental.start_date < Time.now && rental.end_date > Time.now
+  end
+end
 
 end
 
