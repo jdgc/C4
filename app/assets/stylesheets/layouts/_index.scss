@@ -7,12 +7,63 @@
 .content-wrap {
   min-height: calc(100vh - 70px);
 }
+.wrapper {
+  padding: 3em 0 2em 0;
+}
 body .container {
   color: #777678;
 }
 .input-size-large {
   width: 400px;
 }
+
+.caption-margin-top {
+  margin-top: 1.5em;
+}
+.caption-margin-btm {
+  margin-bottom: 1.5em;
+}
+.section-margin-top {
+  margin-top: 3em;
+}
+.section-margin-btm {
+  margin-bottom: 3em;
+}
+.header-wpr {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+}
+.header-text {
+  font-weight: 800;
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
+}
+  .header-main {
+    color: $dark-purple;
+  }
+  .header-alt1 {
+    color: #fff;
+  }
+  .header-alt2 {
+    color: $light-gray;
+  }
+.caption-text {
+  font-size: 20px;
+  font-weight: 300;
+  font-family: $body-font;
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
+}
+.subheading-text {
+  font-weight: 300;
+  font-family: $body-font;
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
+}
+
 .font-weight-extra-bold {
   font-weight: 800;
 }
@@ -20,39 +71,18 @@ body .container {
   font-weight: 300;
 }
 .font-body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $body-font;
 }
 .font-body-size {
   font-size: 18px;
+}
+.font-header {
+  font-family: $headers-font;
 }
 .no-whitespace {
   margin: 0;
   padding: 0;
 }
-.heading-wpr {
-  margin-top: 50px;
-  margin-bottom: 40px;
+hr {
+  border-color: $light-purple;
 }
-.main-heading {
-  font-weight: 800;
-  color: $dark-purple;
-  font-family: $headers-font;
-  text-transform: lowercase;
-}
-
-// * {
-//   margin: 0;
-// }
-// html, body {
-//   height: 100%;
-// }
-
-// .page-wrap {
-//   min-height: 100%;
-//   /* equal to footer height */
-//   margin-bottom: -70px;
-// }
-// .page-wrap:after {
-//   content: "";
-//   display: block;
-// }

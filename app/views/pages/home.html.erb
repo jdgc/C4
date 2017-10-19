@@ -1,10 +1,12 @@
-<div id="hero-wpr">
+<section id="hero-wpr">
   <div class="container">
     <div class="row">
 
       <div id="hero-box">
-      <h1 class="text-center font-weight-extra-bold">press start</h1>
-      <h2 class="text-center font-weight-light font-body font-body">find a game to rent</h2>
+      <header class="caption-margin-btm">
+        <h1 class="text-center header-text header-alt1">press start</h1>
+        <h2 class="text-center caption-text header-alt1">find a game to rent</h2>
+      </header>
 
       <%= form_tag(games_path, :method => "get", id: "search-form", class: "center-block") do %>
       <div class="form-group">
@@ -16,16 +18,16 @@
 
     </div>
   </div>
-</div>
+</section>
 
-<div id="consoles-wpr">
+<div id="consoles-wpr" class="wrapper">
   <div class="container">
     <div class="row">
-      <h2 class="text-center text-lowercase font-weight-extra-bold">pick a console</h2>
+      <h2 class="text-center header-text">pick a console</h2>
       <% Game::CONSOLES.each do |platform| %>
         <div class="col-sm-4">
-          <h3 class="text-center text-lowercase font-weight-light font-body"><%= platform %></h3>
-          <%= link_to image_tag("#{platform}.png", :alt => "#{platform}", :class => "console-img img-responsive"), console_path(platform), :class => "btn btn-inverse console-link" %>
+          <h3 class="text-center text-lowercase font-weight-light font-body font-body-size"><%= platform %></h3>
+          <%= link_to image_tag("#{platform}.png", :alt => "#{platform}", :class => "console-img img-responsive"), console_path(platform), :class => "console-link" %>
         </div>
       <% end %>
     </div>
