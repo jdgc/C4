@@ -10,7 +10,10 @@ class RentalsController < ApplicationController
     @rental.price = ((@rental.end_date - @rental.start_date) / 86400)
     @rental.game = @game
     @rental.user = current_user
+   # @game.available? = false
     if @rental.save
+      @game.update(available?: false)
+      @game.save
       redirect_to rental_path(@rental)
     elsif !user_signed_in?
       flash[:alert] = "You must be signed in to do that."
