@@ -13,10 +13,9 @@ $font-size-base: 18px;
 $gray-base:       $gray;
 $brand-primary:   $purple;
 $brand-success:   $green;
-$brand-info:      $yellow;
+$brand-info:      $blue;
 $brand-danger:    $red;
-$brand-warning:   $blue;
-
+$brand-warning:   $yellow;
 
 // Buttons & inputs' radius
 $border-radius-base:  2px;
@@ -24,3 +23,8 @@ $border-radius-large: 2px;
 $border-radius-small: 2px;
 
 // Override other variables below!
+.wrapper .btn {
+  font-family: $headers-font;
+  font-weight: 800;
+  width: 100px;
+}

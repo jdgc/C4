@@ -1,22 +1,24 @@
-<div id="search-listings">
+<div class="search-listings wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 heading-wpr">
-        <h1 class="main-heading no-whitespace"><%= params[:console] == "" ? "All games" : "#{params[:console]}"%></h1>
-        <h2 class="font-weight-light font-body font-body no-whitespace">listings by console</h2>
+      <div class="col-sm-12 section-margin-btm">
+        <h1 class="header-text header-main"><%= params[:console] == "" ? "All games" : "#{params[:console]}"%></h1>
+        <h2 class="subheading-text">listings by console</h2>
       </div>
       <% if !@games.blank? %>
           <% @games.each do |game| %>
           <div class="col-sm-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
               <div class="card-category"><%= "#{game.console}" %></div>
-              <div class="card-description"><h2><%= "#{game.name}" %></h2></div>
+              <div class="card-description"><h2 class="font-weight-extra-bold text-lowercase"><%= "#{game.name}" %></h2></div>
               <%= link_to "", game_path(game), class: "card-link" %>
             </div>
           </div>
           <% end %>
         <% else %>
-          <div class="col-sm-12"><p>Nothing found :(</p></div>
+          <div class="col-sm-12">
+            <p>Nothing found :(</p>
+          </div>
       <% end %>
     </div>
   </div>
