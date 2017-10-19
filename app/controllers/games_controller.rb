@@ -16,8 +16,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     clean_rentals(@game)
-    @rentals = Rental.where(game_id: @game.id)
     @rental = Rental.new
+    @rentals = Rental.where(game_id: @game.id)
     @status = rental_status(@game)
   end
 
