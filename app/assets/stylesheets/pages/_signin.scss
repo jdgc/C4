@@ -19,11 +19,18 @@
   a {
     color: white;
     font-weight: lighter;
+    &.form-link {
+      vertical-align: middle;
+      margin-left: 10px;
+    }
     &:hover {
       text-decoration: none;
       opacity: .9;
       transition: .2s ease-in-out;
     }
+  }
+  .has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: rgb(255, 108, 119);
   }
 }
 

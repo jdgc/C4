@@ -1,4 +1,4 @@
-<div class="signin-wrapper">
+<div class="signin-wrapper wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -13,7 +13,7 @@
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
               <%= f.input :password_confirmation, required: true %>
               <div class="form-actions white-font">
-              <%= f.button :submit, "sign up", class: "center-block btn btn-primary"%>
+              <%= f.button :submit, "sign up", class: "btn btn-primary"%>
               <%= render "devise/shared/links"%>
               </div>
           </div>
