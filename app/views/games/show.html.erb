@@ -23,8 +23,37 @@
     <div class="col-sm-4">
       <!-- <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p> -->
       <p><b>Pickup Location</b><br/><%= @game.location %></p>
+      <% rental = Rental.where(game_id: @game.id).first %>
+
       <% if @game.owner == current_user %>
         <%= link_to "edit your listing", edit_game_path(@game), :class => "btn btn-primary" %>
+
+      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today %>
+      <p>This game is currently on loan and will be available for rental after <%= @rental.end_date.to_date %> </p>
+
+      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today %>
+      <p>This game is currently on loan and will be available for rental after <%= rental.end_date.to_date %> </p>
+
+       <% elsif @game.available? == false && rental.start_date > Date.today && rental.end_date > Date.today %>
+      <p>This game is unavailable from <%= rental.start_date.to_date %> to <%= rental.end_date.to_date %> </p>
+      <%= simple_form_for([@game, @rental]) do |f| %>
+          <%# f.input :price %>
+          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
+          <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+          <%= f.submit "rent this game", :class => "btn btn-primary" %>
+        <% end %>
+
+      <% elsif @game.available? == false && rental.start_date < Date.today && rental.end_date < Date.today %>
+      <% @game.update(available?: true) %>
+      <% @game.save %>
+      <%= simple_form_for([@game, @rental]) do |f| %>
+          <%# f.input :price %>
+          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
+          <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+          <%= f.submit "rent this game", :class => "btn btn-primary" %>
+        <% end %>
+
+
       <% else %>
         <%= simple_form_for([@game, @rental]) do |f| %>
           <%# f.input :price %>
