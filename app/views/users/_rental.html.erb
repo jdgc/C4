@@ -1,13 +1,13 @@
 <h1>currently renting:</h1>
 <% if !@rentals.blank? %>
   <% for rental in @rentals %>
-  <div class="game-block">
+  <div class="rent-block">
     <%= cl_image_tag_or_default(rental.game, class_name: "user-upload-photo") %>
-    <div class="game-info">
+    <div class="rented-info">
     <%#= cl_image_tag rental.game.photo.nil? ? 'http://placehold.it/60x60' : rental.game.photo.path, height: 60, width: 60, crop: :fill %>
-    <h3 class="game-name"> <%= link_to "#{rental.game.name}", rental_path(rental) %></h3>
-    <p class="game-console"><%= image_tag "#{rental.game.console}.png", :class => "console-image"%><%= "#{rental.game.console}" %></p>
-    <p class="game-status">Due on: </p>
+      <h3 class="game-name"> <%= link_to "#{rental.game.name}", rental_path(rental) %></h3>
+      <p class="game-console"><%= image_tag "#{rental.game.console}.png", :class => "console-image"%><%= "#{rental.game.console}" %></p>
+      <p class="game-status">Return date: <%= rental.end_date.to_date %></p>
     </div>
   </div>
   <% end %>
