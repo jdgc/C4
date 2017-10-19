@@ -4,36 +4,50 @@
     <div class="row">
       <div class="col-sm-4">
         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/300x300" %>
+        <%= image_tag avatar_url, id: "profile_picture" %>
       </div>
       <div class="col-sm-8">
         <div class="game-rental-listing">
           <h1>currently listed:</h1>
           <% if !@games.blank? %>
-
-              <% for game in @games %>
-                <div class="game-block">
-                  <%= image_tag "#{game.console}.png", :class => "console-image"%>
-                 <div class="game-info">
+            <% for game in @games %>
+              <div class="game-block">
+                <%#= cl_image_tag game.photo.nil? ? 'http://placehold.it/60x60' : game.photo.path, height: 60, width: 60, crop: :fill, class: "user-upload-photo" %>
+                <%= cl_image_tag_or_default(game, class_name:"user-upload-photo") %>
+                <div class="game-info">
                   <h3 class="game-name"><%= link_to "#{game.name}", game_path(game) %></h3>
-                   <p class="game-console"><%= "#{game.console}" %></p>
-               </div>
+                  <p class="game-console"><%= image_tag "#{game.console}.png", :class => "console-image"%><%= "#{game.console}" %></p>
+                  <p class="start-date">Start date:</p>
+                  <p class="due-date">Return date:</p>
+                  </div>
+                  <div class="edit-delete-button">
+                    <%= link_to "Edit", edit_game_path(game), class: "btn btn-info" %>
+                    <%#= link_to "Delete", game_path(game), method :delete, data: { confirm: "Are you sure you want to delete this rental?" } %>
+                </div>
               </div>
           <% end %>
-         <% else %>
-             <p>No games!</p>
+          <% else %>
+            <p>No games!</p>
           <% end %>
         </div>
         <div class="game-borrowing-list">
-           <h1>currently renting:</h1>
-           <% if !@rentals.blank? %>
-               <% for rental in @rentals %>
-               <div class="rent-block">
-                 <%= link_to "#{rental.game.name}", rental_path(rental) %>
-               </div>
-               <% end %>
-           <% else %>
-             <p>No current rentals!</p>
-           <% end %>
+          <h1>currently renting:</h1>
+          <% if !@rentals.blank? %>
+            <% for rental in @rentals %>
+            <div class="game-block">
+              <%= cl_image_tag_or_default(rental.game, class_name: "user-upload-photo") %>
+              <div class="game-info">
+              <%#= cl_image_tag rental.game.photo.nil? ? 'http://placehold.it/60x60' : rental.game.photo.path, height: 60, width: 60, crop: :fill %>
+              <h3 class="game-name"> <%= link_to "#{rental.game.name}", rental_path(rental) %></h3>
+              <p class="game-console"><%= image_tag "#{rental.game.console}.png", :class => "console-image"%><%= "#{rental.game.console}" %></p>
+              <p class="game-status">Due on: </p>
+              </div>
+            </div>
+            <% end %>
+            <% else %>
+              <p>No current rentals!</p>
+          <% end %>
         </div>
       </div>
     </div>
