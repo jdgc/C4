@@ -26,5 +26,8 @@ $border-radius-small: 2px;
 .wrapper .btn {
   font-family: $headers-font;
   font-weight: 800;
-  width: 100px;
+}
+.wrapper .alert-danger {
+  background-color: $red;
+  border-color: $red;
 }

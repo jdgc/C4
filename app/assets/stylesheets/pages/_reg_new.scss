@@ -1,6 +1,6 @@
 .signin-wrapper {
   background: $purple url(image-path('hero-bg.gif')) center fixed;
-  height: 100vh;
+  min-height: calc(100vh - 140px);
   color: white;
   display: flex;
   justify-content: center;
@@ -16,8 +16,22 @@
     font-weight: lighter;
     font-size: 12px;
   }
+  a {
+    color: white;
+    font-weight: lighter;
+    &.form-link {
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    &:hover {
+      text-decoration: none;
+      opacity: .9;
+      transition: .2s ease-in-out;
+    }
+  }
+  .has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+    color: rgb(255, 108, 119);
+  }
 }
 
-.white-font {
-  color: white;
-}
+
