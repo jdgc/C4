@@ -8,9 +8,15 @@
       <% if !@games.blank? %>
         <% @games.each do |game|  %>
           <div class="col-sm-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
-              <div class="card-category"><%= "#{game.console}" %></div>
-              <div class="card-description"><h2 class="font-weight-extra-bold text-lowercase"><%= "#{game.name}" %></h2></div>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path game.photo.nil? ? 'http://placehold.it/300x400' : game.photo.path, height: 300, width: 400, crop: :fill %>')">
+              <div class="card-body">
+                <div class="card-console"><%= "#{game.console}" %></div>
+                <div><%= image_tag "#{game.console}-white.png", class: "card-avatar" %></div>
+                <div class="card-name">
+                  <p class="game-name"><%= "#{game.name}" %></p>
+                  <p class="available-active">AVAILABLE</p>
+                </div>
+              </div>
               <%= link_to "", game_path(game), class: "card-link" %>
             </div>
           </div>
