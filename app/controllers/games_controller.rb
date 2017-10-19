@@ -64,7 +64,7 @@ class GamesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @game = Game.find(params[:id])
     if @game.owner != current_user
       flash[:alert] = "Invalid user."
@@ -73,6 +73,9 @@ class GamesController < ApplicationController
       flash[:alert] = "Cannot delete a game that is being rented out."
       redirect_to game_path(@game)
     end
+    @game.destroy
+    flash[:notice] = "Game deleted."
+    redirect_to user_path(current_user)
   end
 
 
