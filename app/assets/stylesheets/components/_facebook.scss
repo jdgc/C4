@@ -1,0 +1,31 @@
+.btn-social {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: rgba(0,0,0,0.2);
+  .fa-facebook {
+    line-height: 34px;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    padding-right: 10px;
+    margin-right: 10px;
+  }
+  &:hover {
+    text-decoration: none;
+    background-color: #405d9c;
+    transition: .2s ease-in-out;
+  }
+  &:active, &:focus {
+    text-decoration: none;
+  }
+}
