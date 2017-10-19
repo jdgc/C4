@@ -16,6 +16,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @rentals = Rental.where(game_id: @game.id)
+    @rental = Rental.new
+    @status = rental_status(@game)
   end
 
   def new
@@ -63,5 +65,18 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :description, :console, :photo, :location)
+  end
+
+def rental_status(game)
+    rental = game.rentals.first
+    if game.owner == current_user && game.available? == true
+      return "edit"
+    elsif game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today
+      return "unavailable"
+    elsif game.available? == false && rental.start_date > Date.today && rental.end_date > Date.today
+      return "future_rental"
+    else
+      return "available"
+    end
   end
 end
