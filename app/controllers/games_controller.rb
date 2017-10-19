@@ -15,6 +15,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    clean_rentals(@game)
     @rentals = Rental.where(game_id: @game.id)
     @rental = Rental.new
     @status = rental_status(@game)
@@ -80,6 +81,12 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :description, :console, :photo, :location)
+  end
+
+  def clean_rentals(game)
+    game.rentals.each do |rental|
+      rental.destroy if Date.today > rental.end_date
+    end
   end
 
 

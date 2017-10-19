@@ -6,11 +6,11 @@ class RentalsController < ApplicationController
 
   def create
     @game = Game.find(params[:game_id])
-    @rentals = Rental.where(game_id:@game.id)
+    @rental = Rental.new(rental_params)
     @rental.price = ((@rental.end_date - @rental.start_date) / 86400)
     @rental.game = @game
     @rental.user = current_user
-    if @rental.save && valid?(@game)
+    if @rental.save && valid?(@game, @rental)
       @game.update(available?: false)
       @game.save
       redirect_to rental_path(@rental)
@@ -33,10 +33,10 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:price, :start_date, :end_date)
   end
 
-  def valid?(game)
-    all_rentals = Rental.where(game_id:game.game_id)
+  def valid?(game, test)
+    all_rentals = Rental.where(game_id:game.id)
     all_rentals.each do |item|
-      if item.end_date >= game.end_date || item.start_date < game.start_date
+      if item.end_date >= test.end_date && item.start_date < test.start_date
         return false
       end
     end

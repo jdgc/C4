@@ -27,12 +27,6 @@
     <div class="col-sm-4">
        <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
       <p><b>Pickup Location</b><br/><%= @game.location %></p>
-
-      <% @game.rentals.each do |rental| %>
-      <% rental.destroy if Date.today > rental.end_date %>
-      <% end %>
-
-      <% rental = Rental.where(game_id: @game.id) %>
       <% case @status %>
         <% when "edit"  %>
        <%= link_to "edit your listing", edit_game_path(@game), :class => "btn btn-primary" %>
