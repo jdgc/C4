@@ -28,8 +28,10 @@
           <% when "edit"  %>
           <%= link_to "edit", edit_game_path(@game), :class => "btn btn-info" %>
           <% when "unavailable" %>
+          <%= render "rentals" %>
           <p>This game is currently on loan and will be available for rental after <%= @game.rentals.first.end_date.to_date %></p>
           <% when "future_rental" %>
+          <%= render "rentals" %>
            <p>This game is unavailable from <%= @game.rentals.first.start_date.to_date %> to <%= @game.rentals.first.end_date.to_date %> </p>
            <%= render 'form' %>
           <% when "available" %>
