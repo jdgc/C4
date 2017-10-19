@@ -1,0 +1,4 @@
+<% @rentals.each do |rental| %>
+  <p><%= rental.user.email %></p>
+  <p>From <%= rental.start_date.to_date %> to <%= rental.end_date.to_date %></p>
+<% end %>
