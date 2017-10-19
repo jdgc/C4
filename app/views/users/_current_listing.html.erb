@@ -1,0 +1,21 @@
+<h1>currently listed:</h1>
+<% if !@games.blank? %>
+  <% for game in @games %>
+    <div class="game-block">
+      <%#= cl_image_tag game.photo.nil? ? 'http://placehold.it/60x60' : game.photo.path, height: 60, width: 60, crop: :fill, class: "user-upload-photo" %>
+      <%= cl_image_tag_or_default(game, class_name:"user-upload-photo") %>
+      <div class="game-info">
+        <h3 class="game-name"><%= link_to "#{game.name}", game_path(game) %></h3>
+        <p class="game-console"><%= image_tag "#{game.console}.png", :class => "console-image"%><%= "#{game.console}" %></p>
+        <p class="start-date">Start date:</p>
+        <p class="due-date">Return date:</p>
+      </div>
+        <div class="edit-delete-button">
+          <%= link_to "edit", edit_game_path(game), class: "btn btn-warning" %>
+          <%= link_to "delete", game_path(game), method: :delete, data: { confirm: "Are you sure you want to delete this rental?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+<% end %>
+<% else %>
+  <p>No games!</p>
+<% end %>
