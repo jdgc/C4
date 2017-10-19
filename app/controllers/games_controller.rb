@@ -28,8 +28,10 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.owner = current_user
     if @game.save
+      flash[:notice] = "Game successfully listed!"
       redirect_to game_path(@game)
     else
+      flash[:alert] = "Invalid information."
       render :new
     end
   end
@@ -37,7 +39,11 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
     if @game.owner != current_user
+      flash[:alert] = "Invalid user."
       redirect_to root_path
+    elsif @game.available? != true
+      flash[:alert] = "Cannot edit a game that is being rented out."
+      redirect_to game_path(@game)
     end
   end
 
@@ -46,6 +52,9 @@ class GamesController < ApplicationController
     if @game.owner != current_user
       return false
       redirect_to root_path
+    elsif @game.available != true
+      flash[:alert] = "Cannot edit a game that is being rented out."
+      redirect_to game_path(@game)
     end
      @game.update(game_params)
     if @game.save
@@ -57,7 +66,13 @@ class GamesController < ApplicationController
 
   def delete
     @game = Game.find(params[:id])
-    @game.destroy
+    if @game.owner != current_user
+      flash[:alert] = "Invalid user."
+      redirect_to root_path
+    elsif @game.available? != true
+      flash[:alert] = "Cannot delete a game that is being rented out."
+      redirect_to game_path(@game)
+    end
   end
 
 
@@ -66,6 +81,7 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:name, :description, :console, :photo, :location)
   end
+
 
 def rental_status(game)
     rental = game.rentals.first

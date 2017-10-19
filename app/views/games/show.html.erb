@@ -38,7 +38,7 @@
               <%=# f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
               <%=# f.submit "rent", :class => "btn btn-info" %>
             <%# end %>
-          <%# end %> 
+          <%# end %>
         </div>
       </div> -->
       <% else %>
@@ -73,3 +73,19 @@
     </div>
   </div>
 </div>
+
+<!--
+<% if current_user == @game.owner %>
+  <% if @game.avaliable? == true %>
+    render edit button
+    <% else %>
+    <p>You cant edit a game being rented out</p>
+  <% end %>
+<% else %>
+  <% if @game.avaliable? == true %>
+    render rental form
+    <% else %>
+     <p> Days left until you can rent: @game.due_date - Time.now </p>
+  <% end %>
+<% end %>
+-->
