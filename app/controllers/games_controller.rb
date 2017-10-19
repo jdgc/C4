@@ -15,9 +15,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-#    if @game.aval? #method that checks AND updates game availablity
-
-    #end
+    @time_remaining = get_availability(@game)
     @rental = Rental.new
   end
 
@@ -29,7 +27,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.owner = current_user
     if @game.save
-      flash[:notice] = "Game % if @game.avaliable? == true %>successfully listed!"
+      flash[:notice] = "Game successfully listed!"
       redirect_to game_path(@game)
     else
       flash[:alert] = "Invalid information."
@@ -54,7 +52,7 @@ class GamesController < ApplicationController
       return false
       redirect_to root_path
     elsif @game.available != true
-      flash[:alert] = "Cannot % if @game.avaliable? == true %>edit a game that is being rented out."
+      flash[:alert] = "Cannot edit a game that is being rented out."
       redirect_to game_path(@game)
     end
      @game.update(game_params)
@@ -81,5 +79,10 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :description, :console, :photo, :location)
+  end
+
+  def get_availability(game)
+    rental = Rental.where(game_id: game.id)
+    return Time.now - rental.end_date
   end
 end
