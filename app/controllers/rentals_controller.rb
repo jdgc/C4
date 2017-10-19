@@ -17,6 +17,9 @@ class RentalsController < ApplicationController
     elsif !user_signed_in?
       flash[:alert] = "You must be signed in to do that."
       redirect_to game_path(@game)
+    elsif current_user == @game.owner
+      flash[:alert] = "You cannot rent your own game ;)"
+      redirect_to game_path(@game)
     else
       flash[:alert] = "Please enter a valid rental date"
       redirect_to game_path(@game)

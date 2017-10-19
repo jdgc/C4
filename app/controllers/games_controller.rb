@@ -95,7 +95,7 @@ class GamesController < ApplicationController
 
 def rental_status(game)
     rental = game.rentals.first
-    if game.owner == current_user && game.available? == true
+    if game.owner == current_user
       return "edit"
     elsif game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today
       return "unavailable"
