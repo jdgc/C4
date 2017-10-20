@@ -13,6 +13,10 @@
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+  &:hover {
+    opacity: .8;
+    transition: .2s ease-in-out;
+  }
 }
 
 /* User Avatar */
