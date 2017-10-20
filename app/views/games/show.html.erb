@@ -31,7 +31,7 @@
           <%= render "rentals" %>
           <p>This game is currently on loan and will be available for rent after <%= @game.rentals.first.end_date.to_date %></p>
           <% when "future_rental" %>
-          <%= render "rentals" %>
+          <%# render "rentals" %>
            <p>This game is unavailable from <%= @game.rentals.first.start_date.to_date %> to <%= @game.rentals.first.end_date.to_date %> </p>
            <%= render 'rentals/form' %>
           <% when "available" %>
