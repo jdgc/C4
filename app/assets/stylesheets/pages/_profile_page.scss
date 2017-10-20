@@ -77,9 +77,10 @@
 
    }
 
-   .game-info {
-     margin-left: 10px;
-     min-width: 40vw;
+  .game-info {
+    margin-left: 10px;
+    min-width: 40vw;
+    flex-grow: 1;
    }
 
  }
