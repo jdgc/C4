@@ -21,7 +21,7 @@
     // console.log(start, end, (end - start) / (1000 * 60 * 60 * 24));
     const days = (end - start) / (1000 * 60 * 60 * 24) + 1;
 
-    $('.calculation').text(`You will rent for ${days} days`);
+    $('.calculation').text(`You will rent for ${days} days at a price of $${days}`);
   };
 
   // document.querySelectorAll('#new_rental select').forEach(item => {
