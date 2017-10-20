@@ -1,16 +1,19 @@
-<%= stylesheet_link_tag 'profile_page' %>
-<div class="games-container">
+<div class="games-container wrapper">
   <div class="container">
     <div class="row">
+      <div class="col-sm-12 section-margin-btm">
+        <h1 class="header-text header-main">your profile</h1>
+      </div>
       <div class="col-sm-4">
-        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/300x300" %>
         <%= image_tag avatar_url, id: "profile_picture" %>
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
       </div>
       <div class="col-sm-8 col-xs-12">
         <div class="game-rental-listing">
           <%= render "users/current_listing" %>
         </div>
+        <hr />
         <div class="game-borrowing-list">
           <%= render "users/rental" %>
         </div>
