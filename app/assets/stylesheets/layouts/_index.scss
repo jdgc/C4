@@ -89,3 +89,7 @@ body .container {
 hr {
   border-color: $light-purple;
 }
+a:hover {
+  text-decoration: none;
+  transition: .2s ease-in-out;
+}
