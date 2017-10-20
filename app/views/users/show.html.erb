@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 section-margin-btm">
-        <h1 class="header-text header-main">your profile</h1>
+        <h1 class="header-text header-main">profile</h1>
       </div>
       <div class="col-sm-4">
-        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/300x300" %>
+        <% avatar_url = @user.facebook_picture_url || "http://placehold.it/300x300" %>
         <%= image_tag avatar_url, id: "profile_picture" %>
         <h2><%= @user.first_name %> <%= @user.last_name %></h2>
       </div>
