@@ -4,6 +4,7 @@
       <div class="col-sm-12 section-margin-btm">
         <h1 class="header-text header-main">game matches</h1>
         <h2 class="font-weight-light font-body font-body no-whitespace"><%= params[:search] == "" ? "All games" : "search results for: #{params[:search]}"%></h2>
+        <%= link_to "see all games", games_path %>
       </div>
       <% if !@games.blank? %>
         <% @games.each do |game|  %>

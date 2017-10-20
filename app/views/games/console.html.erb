@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-sm-12 section-margin-btm">
         <h1 class="header-text header-main"><%= params[:console] == "" ? "All games" : "#{params[:console]}"%></h1>
-        <h2 class="subheading-text">listings by console</h2>
+        <h2 class="subheading-text">listings by console</h2> <%= link_to "see all games", games_path %>
       </div>
       <% if !@games.blank? %>
           <% @games.each do |game| %>
