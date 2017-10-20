@@ -58,11 +58,11 @@ Game.create([
     location: "Hiroshima"
   },
   {
-    name: "Earthbound",
-    console: "Super Nintendo",
+    name: "Goldeneye 007",
+    console: "Nintendo 64",
     description: "This game is really good",
     owner: User.first,
-    location: "Hokkaido"
+    location: "東京都 目黒区目黒 2-11-3 印刷工場"
   }
   ])
 

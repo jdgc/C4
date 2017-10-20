@@ -97,7 +97,7 @@ def rental_status(game)
     rental = game.rentals.first
     if game.owner == current_user
       return "edit"
-    elsif game.available? == false && rental.start_date < Date.today && rental.end_date > Date.today
+    elsif game.available? == false && rental.start_date <= Date.today && rental.end_date > Date.today
       return "unavailable"
     elsif game.available? == false && rental.start_date > Date.today && rental.end_date > Date.today
       return "future_rental"
