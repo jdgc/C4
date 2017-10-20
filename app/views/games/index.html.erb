@@ -15,9 +15,9 @@
                 <div class="card-name">
                   <p class="game-name"><%= "#{game.name}" %></p>
                   <% if game.available? == true %>
-                    <p class="available-active">AVAILABLE</p>
+                    <p class="available-active badge badge-success">AVAILABLE</p>
                   <% else %>
-                    <p class="available-active">CURRENTLY UNAVAILABLE</p>
+                    <p class="available-active badge badge-danger">CURRENTLY UNAVAILABLE</p>
                   <% end %>
                 </div>
               </div>
