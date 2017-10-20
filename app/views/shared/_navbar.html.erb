@@ -7,7 +7,7 @@
   <div class="nav-search">
     <%= form_tag(games_path, :method => "get", id: "nav-search-form") do %>
     <div class="input-group">
-      <%= text_field_tag :search, params[:search], class: "form-control input-size-large" %>
+      <%= text_field_tag :search, params[:search], class: "form-control input-size-large", placeholder: "find a game" %>
       <div class="input-group-btn">
         <%= button_tag(type: "submit", class: "btn btn-primary font-weight-extra-bold") do %>
         <i class="fa fa-search" aria-hidden="true"></i>
