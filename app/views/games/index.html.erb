@@ -1,4 +1,4 @@
-<div class="search-listings wrapper">
+ <div class="search-listings wrapper">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 section-margin-btm">
@@ -14,7 +14,11 @@
                 <div><%= image_tag "#{game.console}-white.png", class: "card-avatar" %></div>
                 <div class="card-name">
                   <p class="game-name"><%= "#{game.name}" %></p>
-                  <p class="available-active">AVAILABLE</p>
+                  <% if game.available? == true %>
+                    <p class="available-active">AVAILABLE</p>
+                  <% else %>
+                    <p class="available-active">CURRENTLY UNAVAILABLE</p>
+                  <% end %>
                 </div>
               </div>
               <%= link_to "", game_path(game), class: "card-link" %>
