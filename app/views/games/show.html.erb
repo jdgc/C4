@@ -22,14 +22,14 @@
       </div>
       <div class="col-sm-4">
         <div class="rental-box">
-         <p>Game owner: <%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
+         <p><b>Game Owner</b><br/><%= link_to "#{@game.owner.email}", user_path(@game.owner) %></p>
           <p><b>Pickup Location</b><br/><%= @game.location %></p>
           <% case @status %>
           <% when "edit"  %>
           <%= link_to "edit", edit_game_path(@game), :class => "btn btn-info" %>
           <% when "unavailable" %>
           <%= render "rentals" %>
-          <p>This game is currently on loan and will be available for rental after <%= @game.rentals.first.end_date.to_date %></p>
+          <p>This game is currently on loan and will be available for rent after <%= @game.rentals.first.end_date.to_date %></p>
           <% when "future_rental" %>
           <%= render "rentals" %>
            <p>This game is unavailable from <%= @game.rentals.first.start_date.to_date %> to <%= @game.rentals.first.end_date.to_date %> </p>
