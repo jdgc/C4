@@ -1,4 +1,5 @@
 class RentalsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @game = Game.find(params[:game_id])
     @rental = Rental.new
@@ -7,22 +8,27 @@ class RentalsController < ApplicationController
   def create
     @game = Game.find(params[:game_id])
     @rental = Rental.new(rental_params)
+    if @rental.start_date < Date.today || @rental.start_date > @rental.end_date
+      flash[:alert] = "Invalid date format."
+      redirect_to game_path(@game)
+      return false
+    end
     @rental.price = ((@rental.end_date - @rental.start_date) / 86400)
     @rental.game = @game
     @rental.user = current_user
-    if @rental.save && valid?(@game, @rental)
+    if current_user == @rental.game.owner
+      flash[:alert] = "You cannot rent your own game ;)"
+      redirect_to root_path
+      return false
+    elsif @rental.save && valid?(@game, @rental)
       @game.update(available?: false)
       @game.save
       redirect_to rental_path(@rental)
-    elsif !user_signed_in?
-      flash[:alert] = "You must be signed in to do that."
-      redirect_to game_path(@game)
-    elsif current_user == @game.owner
-      flash[:alert] = "You cannot rent your own game ;)"
-      redirect_to game_path(@game)
+      return true
     else
-      flash[:alert] = "Please enter a valid rental date"
+      flash[:alert] = "Somebody has already booked that date."
       redirect_to game_path(@game)
+      return false
     end
   end
 

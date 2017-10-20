@@ -33,11 +33,11 @@
           <% when "future_rental" %>
           <%= render "rentals" %>
            <p>This game is unavailable from <%= @game.rentals.first.start_date.to_date %> to <%= @game.rentals.first.end_date.to_date %> </p>
-           <%= render 'form' %>
+           <%= render 'rentals/form' %>
           <% when "available" %>
           <% @game.update(available?: true) %>
           <% @game.save %>
-          <%= render 'form' %>
+          <%= render 'rentals/form' %>
           <% end %>
         </div>
         </div>

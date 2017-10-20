@@ -1,7 +1,13 @@
 <%= simple_form_for([@game, @rental]) do |f| %>
-  <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-  <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-  <div class="calculation">You will rent for 1 day</div>
+  <%= f.input :start_date,
+  as: :date,
+  start_year: Date.today.year,
+  end_year: Date.today.year + 2 %>
+  <%= f.input :end_date,
+  as: :date,
+  start_year: Date.today.year,
+  end_year: Date.today.year + 5 %>
+  <div class="calculation">You will rent for 1 day at a price of $1</div>
   <%= f.submit "rent this game", :class => "btn btn-primary" %>
 <% end %>
 
