@@ -49,6 +49,12 @@
 
   .available-active {
     font-size: 12px;
-    padding: 0;
+  }
+
+  .badge-success {
+    background-color: $green;
+  }
+  .badge-danger {
+    background-color: $red;
   }
 }
