@@ -1,9 +1,9 @@
 <%= simple_form_for([@game, @rental]) do |f| %>
-  <%= f.input :start_date,
+  <%= f.input :start_date, :label => "When would you like to pick up the game?",
   as: :date,
   start_year: Date.today.year,
   end_year: Date.today.year + 2 %>
-  <%= f.input :end_date,
+  <%= f.input :end_date, :label => "When would you like to return the game?",
   as: :date,
   start_year: Date.today.year,
   end_year: Date.today.year + 5 %>
