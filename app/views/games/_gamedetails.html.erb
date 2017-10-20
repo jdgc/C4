@@ -1,0 +1,4 @@
+<%= f.input :name %>
+<%= f.input :description, as: :text %>
+<%= f.input :console, collection: Game::CONSOLES %>
+<%= f.input :location, label: 'Game pickup address' %>
