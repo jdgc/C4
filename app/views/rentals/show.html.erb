@@ -1,42 +1,55 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 heading-wpr">
-      <h1 class="main-heading no-whitespace">Game Rental</h1>
-      <h2 class="font-weight-light font-body font-body no-whitespace">rental details</h2>
-    </div>
-    <div class="col-sm-4">
-      <ul>
-        <li>Title: <%= @rental.game.name %></li>
-        <li>Game owner: <%= "#{@rental.game.owner.email}" %></li>
-        <li>Game lent to: <%= "#{@rental.user.email}" %></li>
-        <li>Due date: <%= @rental.end_date.to_date %></li>
-        <li>Price: <%= "$#{@rental.price}" %></li>
-      </ul>
-    </div>
-    <div class="col-sm-8">
-      <p>Pickup location:<br/>
-        <%= @rental.game.location %></p>
-      <style>
-        .map-container {
-          width: 100%;
-          margin: 0 auto;
-        }
-        .map-wpr {
-          position: relative;
-        }
-        #map {
-            height: 400px;
-            overflow: hidden;
-            padding-bottom: 22.25%;
-            padding-top: 30px;
-            margin-bottom: 30px;
+<%= stylesheet_link_tag "rental_confirmation" %>
+<div class="rented-info wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 heading-wpr">
+        <h1 class="header-text header-main">Game Rental</h1>
+        <h2 class="subheading-text">rental details</h2>
+      </div>
+      <div class="col-sm-4">
+        <ul class="list-unstyled rental-box">
+          <li><i class="fa fa-gamepad icon-mr" aria-hidden="true"></i>
+            <strong>Title</strong><br> <%= @rental.game.name %>
+          </li>
+          <li><i class="fa fa-user-circle icon-mr" aria-hidden="true"></i>
+            <strong>Game owner</strong><br> <%= "#{@rental.game.owner.email}" %>
+          </li>
+          <li><i class="fa fa-user-circle-o icon-mr" aria-hidden="true"></i>
+            <strong>Game lent to</strong><br> <%= "#{@rental.user.email}" %>
+          </li>
+          <li><i class="fa fa-calendar icon-mr" aria-hidden="true"></i>
+            <strong>Due date</strong><br> <%= @rental.end_date.to_date %>
+          </li>
+          <li><i class="fa fa-credit-card icon-mr" aria-hidden="true"></i>
+            <strong>Price</strong><br> <%= "$#{@rental.price}" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-8">
+        <p><strong>Pickup location:</strong><br/>
+          <%= @rental.game.location %></p>
+        <style>
+          .map-container {
+            width: 100%;
+            margin: 0 auto;
+          }
+          .map-wpr {
             position: relative;
-            background: $gray;
-        }
-      </style>
-      <div class="map-container">
-        <div class="map-wrp">
-          <div id="map"></div>
+          }
+          #map {
+              height: 400px;
+              overflow: hidden;
+              padding-bottom: 22.25%;
+              padding-top: 30px;
+              margin-bottom: 30px;
+              position: relative;
+              background: $gray;
+          }
+        </style>
+        <div class="map-container">
+          <div class="map-wrp">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -63,3 +76,5 @@
     handler.fitMapToBounds();
   });
 </script>
+
+
