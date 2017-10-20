@@ -1,5 +1,32 @@
 <%= simple_form_for([@game, @rental]) do |f| %>
-          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-           <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-           <%= f.submit "rent this game", :class => "btn btn-primary" %>
-         <% end %>
+  <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
+  <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
+  <div class="calculation">You will rent for 1 day</div>
+  <%= f.submit "rent this game", :class => "btn btn-primary" %>
+<% end %>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function calcuateRentPrice(event){
+    const startYear = document.querySelector('#rental_start_date_1i').value;
+    const startMonth = document.querySelector('#rental_start_date_2i').value;
+    const startDay = document.querySelector('#rental_start_date_3i').value;
+    const endYear = document.querySelector('#rental_end_date_1i').value;
+    const endMonth = document.querySelector('#rental_end_date_2i').value;
+    const endDay = document.querySelector('#rental_end_date_3i').value;
+
+    const start = new Date(startYear, startMonth-1, startDay);
+    const end = new Date(endYear, endMonth-1, endDay);
+    // console.log(start, end, (end - start) / (1000 * 60 * 60 * 24));
+    const days = (end - start) / (1000 * 60 * 60 * 24) + 1;
+
+    $('.calculation').text(`You will rent for ${days} days`);
+  };
+
+  // document.querySelectorAll('#new_rental select').forEach(item => {
+  //   item.addEventListener('change', calcuateRentPrice)
+  // });
+
+  $('#new_rental select').change(calcuateRentPrice);
+</script>

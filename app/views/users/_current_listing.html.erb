@@ -18,7 +18,7 @@
         <% end %>
       </div>
         <div class="edit-delete-button">
-          <% if current_user == game.owner %>
+          <% if current_user == game.owner && game.available? == true %>
             <%= link_to "edit", edit_game_path(game), class: "btn btn-warning" %>
             <%= link_to "delete", game_path(game), method: :delete, data: { confirm: "Are you sure you want to delete this rental?" }, class: "btn btn-danger" %>
           <% end %>
