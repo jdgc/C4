@@ -53,7 +53,7 @@ class GamesController < ApplicationController
     if @game.owner != current_user
       return false
       redirect_to root_path
-    elsif @game.available != true
+    elsif @game.available? != true
       flash[:alert] = "Cannot edit a game that is being rented out."
       redirect_to game_path(@game)
     end
