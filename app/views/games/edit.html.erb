@@ -1,11 +1,10 @@
-<%= stylesheet_link_tag "new_game" %>
-<div class="create-listing-wpr">
+<div class="create-listing-wpr wrapper">
   <div class="container">
     <div class="row">
-      <h1>update listing</h1>
+      <div class="col-sm-12 section-margin-btm"><h1 class="header-text header-main">update listing</h1></div>
       <%= simple_form_for(@game) do |f| %>
         <div class="container-content">
-          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+          <div class="col-sm-5">
             <div class="text-input">
               <%= f.input :name %>
               <%= f.input :description %>
@@ -20,7 +19,7 @@
           </div>
         </div>
         <div class="col-sm-12">
-          <%= f.submit "UPDATE LISTING", class: "center-block btn btn-success" %>
+          <%= f.submit "update listing", class: "btn btn-success" %>
         </div>
       <% end %>
     </div>
