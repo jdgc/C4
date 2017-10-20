@@ -1,5 +1,0 @@
-<%= simple_form_for([@game, @rental]) do |f| %>
-          <%= f.input :start_date, as: :date, input_html: { min: Date.today }%>
-           <%= f.input :end_date, as: :date, input_html: { min: Date.today+1.days }%>
-           <%= f.submit "rent this game", :class => "btn btn-primary" %>
-         <% end %>
