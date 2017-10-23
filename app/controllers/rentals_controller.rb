@@ -13,7 +13,7 @@ class RentalsController < ApplicationController
       redirect_to game_path(@game)
       return false
     end
-    @rental.price = ((@rental.end_date - @rental.start_date) / 86400)
+    @rental.price = ((@rental.end_date - @rental.start_date) / 86400) + 1
     @rental.game = @game
     @rental.user = current_user
     if current_user == @rental.game.owner
